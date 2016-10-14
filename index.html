@@ -1,0 +1,75 @@
+<html>
+<head></head>
+<body>
+    <div>
+        <input type="checkbox" id="box1" value="apple">
+        <label for="box1">apple</label>
+    </div>
+    <div>
+        <input type="checkbox" id="box2" value="banana">
+        <label for="box2">banana</label>
+    </div>
+    <div>
+        <input type="checkbox" id="box3" value="lime">
+        <label for="box3">lime</label>
+    </div>
+    <div>
+        <input type="checkbox" id="box4" value="orange">
+        <label for="box4">orange</label>
+    </div>
+    <div>
+        <input type="checkbox" id="box5" value="lemon">
+        <label for="box5">lemon</label>
+    </div>
+    <script>
+        var box1 = document.getElementById("box1");
+        var box2 = document.getElementById("box2");
+
+        box1.addEventListener("change", function(){
+            console.log(box1.checked);
+        });
+
+        box2.addEventListener("click", function(){
+            console.log(box2.checked);
+        });
+
+        var fruits = ["one", "two", "three", "four"];
+        fruits.splice(0,1);
+        console.log(fruits);
+
+        
+
+    //Work with checkbox, addEventListener and for loop
+
+    var boxArray = document.querySelectorAll("input");
+    var newArray = [];
+    //console.log(boxArray);
+
+    for(var i = 0; i < boxArray.length; i++){
+        boxArray[i].addEventListener("change", checkBoxStats(i), false);
+    }
+
+    function checkBoxStats(num){
+        return function(){
+            if(boxArray[num].checked){
+                newArray.push(boxArray[num].value);
+            }else if(!boxArray[num].checked){
+                console.log("gonna remove");
+                removeEle(num);
+            }
+            console.log(newArray);
+        }
+    }
+
+    function removeEle(index){
+        for(var n = 0; n<newArray.length; n++){
+            if(newArray[n] == boxArray[index].value){
+                newArray.splice(n, 1);
+            }    
+        }
+    }
+
+    </script>
+</body>
+
+</html>
